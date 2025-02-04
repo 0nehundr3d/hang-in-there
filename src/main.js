@@ -1,9 +1,22 @@
 // query selector variables go here 👇
-const posterImage = document.querySelector(".poster-img");
-const posterTitle = document.querySelector(".poster-title");
-const posterQuote = document.querySelector(".poster-quote");
+const mainPosterSection = document.querySelector(".main-poster")
+const formSection = document.querySelector(".poster-form")
+const savedSection = document.querySelector(".saved-posters")
 
-const showRandom = document.querySelector(".show-random")
+const posterImage = document.querySelector(".poster-img")
+const posterTitle = document.querySelector(".poster-title")
+const posterQuote = document.querySelector(".poster-quote")
+
+const showRandomButton = document.querySelector(".show-random")
+const formButton = document.querySelector(".show-form")
+const showMainButton = document.querySelector(".show-main")
+const showSavedButton = document.querySelector(".show-saved")
+const backToMainButton = document.querySelector(".back-to-main")
+
+const posterForm = document.querySelector("form")
+const newPosterImgURL = document.getElementById("poster-image-url")
+const newPosterTitle = document.getElementById("poster-title")
+const newPosterQuote = document.getElementById("poster-quote")
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -107,12 +120,19 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-window.addEventListener('load', newPoster)
-showRandom.addEventListener('click', newPoster)
+window.addEventListener('load', () => { newPoster() })
+
+showRandomButton.addEventListener('click', () => { newPoster() })
+formButton.addEventListener('click', () => { changeView(mainPosterSection, formSection) })
+showMainButton.addEventListener('click', () => { changeView(formSection, mainPosterSection) })
+showSavedButton.addEventListener('click', () => { changeView(mainPosterSection, savedSection) })
+backToMainButton.addEventListener('click', () => { changeView(savedSection, mainPosterSection) })
+
+posterForm.addEventListener('submit', makePoster)
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+  return Math.floor(Math.random() * array.length)
 }
 
 function createPoster(imageURL, title, quote) {
@@ -124,8 +144,43 @@ function createPoster(imageURL, title, quote) {
   }
 }
 
-function newPoster() {
-  posterImage.src = images[getRandomIndex(images)];
-  posterTitle.innerText = titles[getRandomIndex(titles)];
-  posterQuote.innerText = quotes[getRandomIndex(quotes)]
+function randomPoster() {
+  return createPoster(
+    images[getRandomIndex(images)],
+    titles[getRandomIndex(titles)],
+    quotes[getRandomIndex(quotes)]
+  )
+}
+
+function newPoster(poster = null) {
+  if (poster == null) {
+    poster = randomPoster()
+  }
+
+  posterImage.src = poster["imageURL"]
+  posterTitle.innerText = poster["title"]
+  posterQuote.innerText = poster["quote"]
+}
+
+function changeView(hidden, shown) {
+  hidden.classList.add("hidden")
+  shown.classList.remove("hidden")
+}
+
+function makePoster(event) {
+  event.preventDefault()
+
+  let newUrl = newPosterImgURL.value
+  let newTitle = newPosterTitle.value
+  let newQuote = newPosterQuote.value
+
+  currentPoster = createPoster(newUrl, newTitle, newQuote)
+
+  images.push(newUrl)
+  titles.push(newTitle)
+  quotes.push(newQuote)
+
+  changeView(formSection, mainPosterSection)
+
+  newPoster(currentPoster)
 }
