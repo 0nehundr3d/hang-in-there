@@ -2,6 +2,8 @@
 const posterImage = document.querySelector(".poster-img");
 const posterTitle = document.querySelector(".poster-title");
 const posterQuote = document.querySelector(".poster-quote");
+
+const showRandom = document.querySelector(".show-random")
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -106,6 +108,7 @@ var currentPoster;
 
 // event listeners go here 👇
 window.addEventListener('load', newPoster)
+showRandom.addEventListener('click', newPoster)
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
