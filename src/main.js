@@ -1,6 +1,7 @@
 // query selector variables go here 👇
 const mainPosterSection = document.querySelector(".main-poster")
 const formSection = document.querySelector(".poster-form")
+const savedSection = document.querySelector(".saved-posters")
 
 const posterImage = document.querySelector(".poster-img")
 const posterTitle = document.querySelector(".poster-title")
@@ -9,6 +10,8 @@ const posterQuote = document.querySelector(".poster-quote")
 const showRandomButton = document.querySelector(".show-random")
 const formButton = document.querySelector(".show-form")
 const showMainButton = document.querySelector(".show-main")
+const showSavedButton = document.querySelector(".show-saved")
+const backToMainButton = document.querySelector(".back-to-main")
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -117,6 +120,8 @@ window.addEventListener('load', newPoster)
 showRandomButton.addEventListener('click', newPoster)
 formButton.addEventListener('click', () => { changeView(mainPosterSection, formSection) })
 showMainButton.addEventListener('click', () => { changeView(formSection, mainPosterSection) })
+showSavedButton.addEventListener('click', () => { changeView(mainPosterSection, savedSection) })
+backToMainButton.addEventListener('click', () => { changeView(savedSection, mainPosterSection) })
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
