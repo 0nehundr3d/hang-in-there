@@ -1,9 +1,14 @@
 // query selector variables go here 👇
-const posterImage = document.querySelector(".poster-img");
-const posterTitle = document.querySelector(".poster-title");
-const posterQuote = document.querySelector(".poster-quote");
+const mainPosterSection = document.querySelector(".main-poster")
+const formSection = document.querySelector(".poster-form")
 
-const showRandom = document.querySelector(".show-random")
+const posterImage = document.querySelector(".poster-img")
+const posterTitle = document.querySelector(".poster-title")
+const posterQuote = document.querySelector(".poster-quote")
+
+const showRandomButton = document.querySelector(".show-random")
+const formButton = document.querySelector(".show-form")
+const showMainButton = document.querySelector(".show-main")
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -108,11 +113,14 @@ var currentPoster;
 
 // event listeners go here 👇
 window.addEventListener('load', newPoster)
-showRandom.addEventListener('click', newPoster)
+
+showRandomButton.addEventListener('click', newPoster)
+formButton.addEventListener('click', () => { changeView(mainPosterSection, formSection) })
+showMainButton.addEventListener('click', () => { changeView(formSection, mainPosterSection) })
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+  return Math.floor(Math.random() * array.length)
 }
 
 function createPoster(imageURL, title, quote) {
@@ -125,7 +133,12 @@ function createPoster(imageURL, title, quote) {
 }
 
 function newPoster() {
-  posterImage.src = images[getRandomIndex(images)];
-  posterTitle.innerText = titles[getRandomIndex(titles)];
+  posterImage.src = images[getRandomIndex(images)]
+  posterTitle.innerText = titles[getRandomIndex(titles)]
   posterQuote.innerText = quotes[getRandomIndex(quotes)]
+}
+
+function changeView(hidden, shown) {
+  hidden.classList.add("hidden")
+  shown.classList.remove("hidden")
 }
