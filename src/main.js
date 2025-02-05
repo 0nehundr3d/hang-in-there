@@ -266,6 +266,8 @@ unmotivationalMainButton.addEventListener('click', () => { changeView(unmotivati
 saveButton.addEventListener('click', savePoster)
 
 posterForm.addEventListener('submit', makePoster)
+
+unmotivationalPostersGrid.addEventListener('dblclick', removePoster)
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
@@ -354,4 +356,23 @@ function createUnmotivationalPosters() {
       <h4>${element["quote"]}</h4>
     </article>`
   })
+}
+
+function removePoster(event) {
+  let element = event.target
+
+  if (!element.parentNode.classList.contains("unmotivational-posters-grid")) {
+    element = element.parentNode
+  }
+
+  if (element.parentNode.classList.contains("unmotivational-posters-grid")) {
+    let toRemove = cleanedPosers.findIndex((poster) => {
+      return poster["title"] === element.childNodes[3].innerText
+    })
+
+    cleanedPosers.splice(toRemove, 1)
+    
+    unmotivationalPostersGrid.innerHTML = ``
+    createUnmotivationalPosters()
+  }
 }
