@@ -23,6 +23,7 @@ const newPosterTitle = document.querySelector("#poster-title")
 const newPosterQuote = document.querySelector("#poster-quote")
 
 const savedPostersGrid = document.querySelector(".saved-posters-grid")
+const unmotivationalPostersGrid = document.querySelector(".unmotivational-posters-grid")
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -250,6 +251,7 @@ let unmotivationalPosters = [
 
 // event listeners go here 👇
 window.addEventListener('load', () => { newPoster() })
+window.addEventListener('load', createUnmotivationalPosters)
 
 showRandomButton.addEventListener('click', () => { newPoster() })
 formButton.addEventListener('click', () => { changeView(mainPosterSection, formSection) })
@@ -339,4 +341,17 @@ function cleanData(data) {
     cleanData.push(createPoster(element["img_url"], element["name"], element["description"]))
   })
   return cleanData
+}
+
+function createUnmotivationalPosters() {
+  let posters = cleanData(unmotivationalPosters)
+
+  posters.forEach((element) => {
+    unmotivationalPostersGrid.innerHTML +=
+    `<article class="mini-poster">
+      <img src="${element["imageURL"]}" alt="${element["title"]}"/>
+      <h2>${element["title"]}</h2>
+      <h4>${element["quote"]}</h4>
+    </article>`
+  })
 }
