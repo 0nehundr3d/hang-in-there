@@ -164,7 +164,6 @@ function newPoster(poster = null) {
   posterQuote.innerText = poster["quote"]
 
   currentPoster = createPoster(poster["imageURL"], poster["title"], poster["quote"])
-  console.log(currentPoster)
 }
 
 function changeView(hidden, shown) {
@@ -191,5 +190,7 @@ function makePoster(event) {
 }
 
 function savePoster() {
-
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster)
+  }
 }
