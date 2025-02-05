@@ -12,11 +12,14 @@ const formButton = document.querySelector(".show-form")
 const showMainButton = document.querySelector(".show-main")
 const showSavedButton = document.querySelector(".show-saved")
 const backToMainButton = document.querySelector(".back-to-main")
+const saveButton = document.querySelector(".save-poster")
 
 const posterForm = document.querySelector("form")
-const newPosterImgURL = document.getElementById("poster-image-url")
-const newPosterTitle = document.getElementById("poster-title")
-const newPosterQuote = document.getElementById("poster-quote")
+const newPosterImgURL = document.querySelector("#poster-image-url")
+const newPosterTitle = document.querySelector("#poster-title")
+const newPosterQuote = document.querySelector("#poster-quote")
+
+const savedPostersGrid = document.querySelector(".saved-posters-grid")
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -127,6 +130,7 @@ formButton.addEventListener('click', () => { changeView(mainPosterSection, formS
 showMainButton.addEventListener('click', () => { changeView(formSection, mainPosterSection) })
 showSavedButton.addEventListener('click', () => { changeView(mainPosterSection, savedSection) })
 backToMainButton.addEventListener('click', () => { changeView(savedSection, mainPosterSection) })
+saveButton.addEventListener('click', savePoster)
 
 posterForm.addEventListener('submit', makePoster)
 // functions and event handlers go here 👇
@@ -160,6 +164,8 @@ function newPoster(poster = null) {
   posterImage.src = poster["imageURL"]
   posterTitle.innerText = poster["title"]
   posterQuote.innerText = poster["quote"]
+
+  currentPoster = createPoster(poster["imageURL"], poster["title"], poster["quote"])
 }
 
 function changeView(hidden, shown) {
@@ -183,4 +189,17 @@ function makePoster(event) {
   changeView(formSection, mainPosterSection)
 
   newPoster(currentPoster)
+}
+
+function savePoster() {
+  if (!savedPosters.includes(currentPoster)) {
+    savedPosters.push(currentPoster)
+
+    savedPostersGrid.innerHTML += 
+    `<article class="mini-poster">
+        <img src="${currentPoster["imageURL"]}" alt="saved poster"/>
+        <h2>${currentPoster["title"]}</h2>
+        <h4>${currentPoster["quote"]}</h4>
+      </atricle>`
+  }
 }
