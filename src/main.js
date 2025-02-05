@@ -18,6 +18,8 @@ const posterForm = document.querySelector("form")
 const newPosterImgURL = document.querySelector("#poster-image-url")
 const newPosterTitle = document.querySelector("#poster-title")
 const newPosterQuote = document.querySelector("#poster-quote")
+
+const savedPostersGrid = document.querySelector(".saved-posters-grid")
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -192,5 +194,12 @@ function makePoster(event) {
 function savePoster() {
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster)
+
+    savedPostersGrid.innerHTML += 
+    `<article class="mini-poster">
+        <img src="${currentPoster["imageURL"]}" alt="saved poster"/>
+        <h2>${currentPoster["title"]}</h2>
+        <h4>${currentPoster["quote"]}</h4>
+      </atricle>`
   }
 }
