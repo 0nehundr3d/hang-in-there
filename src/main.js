@@ -350,7 +350,7 @@ function cleanData(data) {
 function createUnmotivationalPosters() {
   cleanedPosers.forEach((element) => {
     unmotivationalPostersGrid.innerHTML +=
-    `<article class="mini-poster">
+    `<article class="unmotivational-poster">
       <img src="${element["imageURL"]}" alt="${element["title"]}"/>
       <h2>${element["title"]}</h2>
       <h4>${element["quote"]}</h4>
