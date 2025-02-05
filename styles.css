@@ -147,3 +147,7 @@ button:hover {
 
 /* ~~~~~ UNMOTIVATIONAL POSTER SECTION ~~~~~ */
 
+.unmotivational-poster img {
+  height: 200px;
+  width: 300px;
+}
