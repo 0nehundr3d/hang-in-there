@@ -2,6 +2,7 @@
 const mainPosterSection = document.querySelector(".main-poster")
 const formSection = document.querySelector(".poster-form")
 const savedSection = document.querySelector(".saved-posters")
+const unmotivationalSection = document.querySelector(".unmotivational-posters")
 
 const posterImage = document.querySelector(".poster-img")
 const posterTitle = document.querySelector(".poster-title")
@@ -13,6 +14,8 @@ const showMainButton = document.querySelector(".show-main")
 const showSavedButton = document.querySelector(".show-saved")
 const backToMainButton = document.querySelector(".back-to-main")
 const saveButton = document.querySelector(".save-poster")
+const unmotivationalButton = document.querySelector(".unmotivational-posters-btn")
+const unmotivationalMainButton = document.querySelector(".return-to-main")
 
 const posterForm = document.querySelector("form")
 const newPosterImgURL = document.querySelector("#poster-image-url")
@@ -253,6 +256,9 @@ formButton.addEventListener('click', () => { changeView(mainPosterSection, formS
 showMainButton.addEventListener('click', () => { changeView(formSection, mainPosterSection) })
 showSavedButton.addEventListener('click', () => { changeView(mainPosterSection, savedSection) })
 backToMainButton.addEventListener('click', () => { changeView(savedSection, mainPosterSection) })
+unmotivationalButton.addEventListener('click', () => { changeView(mainPosterSection, unmotivationalSection) })
+unmotivationalMainButton.addEventListener('click', () => { changeView(unmotivationalSection, mainPosterSection) })
+
 saveButton.addEventListener('click', savePoster)
 
 posterForm.addEventListener('submit', makePoster)
