@@ -12,6 +12,7 @@ const formButton = document.querySelector(".show-form")
 const showMainButton = document.querySelector(".show-main")
 const showSavedButton = document.querySelector(".show-saved")
 const backToMainButton = document.querySelector(".back-to-main")
+const saveButton = document.querySelector(".save-poster")
 
 const posterForm = document.querySelector("form")
 const newPosterImgURL = document.querySelector("#poster-image-url")
@@ -127,6 +128,7 @@ formButton.addEventListener('click', () => { changeView(mainPosterSection, formS
 showMainButton.addEventListener('click', () => { changeView(formSection, mainPosterSection) })
 showSavedButton.addEventListener('click', () => { changeView(mainPosterSection, savedSection) })
 backToMainButton.addEventListener('click', () => { changeView(savedSection, mainPosterSection) })
+saveButton.addEventListener('click', savePoster)
 
 posterForm.addEventListener('submit', makePoster)
 // functions and event handlers go here 👇
@@ -160,6 +162,9 @@ function newPoster(poster = null) {
   posterImage.src = poster["imageURL"]
   posterTitle.innerText = poster["title"]
   posterQuote.innerText = poster["quote"]
+
+  currentPoster = createPoster(poster["imageURL"], poster["title"], poster["quote"])
+  console.log(currentPoster)
 }
 
 function changeView(hidden, shown) {
@@ -183,4 +188,8 @@ function makePoster(event) {
   changeView(formSection, mainPosterSection)
 
   newPoster(currentPoster)
+}
+
+function savePoster() {
+
 }
