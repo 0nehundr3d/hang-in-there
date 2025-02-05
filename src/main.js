@@ -249,6 +249,8 @@ let unmotivationalPosters = [
   }
 ];
 
+let cleanedPosers = cleanData(unmotivationalPosters)
+
 // event listeners go here 👇
 window.addEventListener('load', () => { newPoster() })
 window.addEventListener('load', createUnmotivationalPosters)
@@ -344,9 +346,7 @@ function cleanData(data) {
 }
 
 function createUnmotivationalPosters() {
-  let posters = cleanData(unmotivationalPosters)
-
-  posters.forEach((element) => {
+  cleanedPosers.forEach((element) => {
     unmotivationalPostersGrid.innerHTML +=
     `<article class="mini-poster">
       <img src="${element["imageURL"]}" alt="${element["title"]}"/>
