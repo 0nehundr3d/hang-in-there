@@ -249,7 +249,7 @@ let unmotivationalPosters = [
   }
 ];
 
-let cleanedPosers = cleanData(unmotivationalPosters)
+let cleanedPosters = cleanData(unmotivationalPosters)
 
 // event listeners go here 👇
 window.addEventListener('load', () => { newPoster() })
@@ -348,7 +348,7 @@ function cleanData(data) {
 }
 
 function createUnmotivationalPosters() {
-  cleanedPosers.forEach((element) => {
+  cleanedPosetrs.forEach((element) => {
     unmotivationalPostersGrid.innerHTML +=
     `<article class="unmotivational-poster">
       <img src="${element["imageURL"]}" alt="${element["title"]}"/>
@@ -366,11 +366,11 @@ function removePoster(event) {
   }
 
   if (element.parentNode.classList.contains("unmotivational-posters-grid")) {
-    let toRemove = cleanedPosers.findIndex((poster) => {
+    let toRemove = cleanedPosters.findIndex((poster) => {
       return poster["title"] === element.childNodes[3].innerText
     })
 
-    cleanedPosers.splice(toRemove, 1)
+    cleanedPosters.splice(toRemove, 1)
     
     unmotivationalPostersGrid.innerHTML = ``
     createUnmotivationalPosters()
