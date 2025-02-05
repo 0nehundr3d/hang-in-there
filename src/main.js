@@ -14,9 +14,9 @@ const showSavedButton = document.querySelector(".show-saved")
 const backToMainButton = document.querySelector(".back-to-main")
 
 const posterForm = document.querySelector("form")
-const newPosterImgURL = document.getElementById("poster-image-url")
-const newPosterTitle = document.getElementById("poster-title")
-const newPosterQuote = document.getElementById("poster-quote")
+const newPosterImgURL = document.querySelector("#poster-image-url")
+const newPosterTitle = document.querySelector("#poster-title")
+const newPosterQuote = document.querySelector("#poster-quote")
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
