@@ -332,3 +332,11 @@ function savePoster() {
       </atricle>`
   }
 }
+
+function cleanData(data) {
+  cleanData = []
+  data.forEach(element => {
+    cleanData.push(createPoster(element["img_url"], element["name"], element["description"]))
+  })
+  return cleanData
+}
