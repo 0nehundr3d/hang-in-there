@@ -384,11 +384,19 @@ function removePoster(event) {
 function randomizeElement(event) {
   let element = event.target
 
+  let poster = createPoster(
+    currentPoster.imageURL,
+    currentPoster.title,
+    currentPoster.quote
+  )
+
   if (element.classList.contains("poster-img")) {
-    posterImage.src = images[getRandomIndex(images)]
+    poster.imageURL = images[getRandomIndex(images)]
   } else if (element.classList.contains("poster-title")) {
-    posterTitle.innerText = titles[getRandomIndex(titles)]
+    poster.title = titles[getRandomIndex(titles)]
   } else if (element.classList.contains("poster-quote")) {
-    posterQuote.innerText = quotes[getRandomIndex(quotes)]
+    poster.quote = quotes[getRandomIndex(quotes)]
   }
+
+  newPoster(poster)
 }
