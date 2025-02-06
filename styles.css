@@ -147,6 +147,14 @@ button:hover {
 
 /* ~~~~~ UNMOTIVATIONAL POSTER SECTION ~~~~~ */
 
+.unmotivational-poster {
+  background-color: grey;
+  width: 26em;
+  border-radius: 15px;
+  padding: 2em 0;
+  margin: .5em;
+}
+
 .unmotivational-poster img {
   height: 200px;
   width: 300px;
