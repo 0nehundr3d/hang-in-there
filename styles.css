@@ -147,6 +147,12 @@ button:hover {
 
 /* ~~~~~ UNMOTIVATIONAL POSTER SECTION ~~~~~ */
 
+.unmotivational-posters-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .unmotivational-poster {
   background-color: grey;
   width: 26em;
