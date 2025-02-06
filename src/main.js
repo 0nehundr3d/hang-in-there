@@ -24,6 +24,8 @@ const newPosterQuote = document.querySelector("#poster-quote")
 
 const savedPostersGrid = document.querySelector(".saved-posters-grid")
 const unmotivationalPostersGrid = document.querySelector(".unmotivational-posters-grid")
+
+const mainPoster = document.querySelector(".poster")
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -268,6 +270,8 @@ saveButton.addEventListener('click', savePoster)
 posterForm.addEventListener('submit', makePoster)
 
 unmotivationalPostersGrid.addEventListener('dblclick', removePoster)
+
+mainPoster.addEventListener('click', randomizeElement)
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
 function getRandomIndex(array) {
@@ -374,5 +378,17 @@ function removePoster(event) {
     
     unmotivationalPostersGrid.innerHTML = ``
     createUnmotivationalPosters()
+  }
+}
+
+function randomizeElement(event) {
+  let element = event.target
+
+  if (element.classList.contains("poster-img")) {
+    posterImage.src = images[getRandomIndex(images)]
+  } else if (element.classList.contains("poster-title")) {
+    posterTitle.innerText = titles[getRandomIndex(titles)]
+  } else if (element.classList.contains("poster-quote")) {
+    posterQuote.innerText = quotes[getRandomIndex(quotes)]
   }
 }
