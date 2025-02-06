@@ -147,6 +147,10 @@ button:hover {
 
 /* ~~~~~ UNMOTIVATIONAL POSTER SECTION ~~~~~ */
 
+.return-to-main {
+  margin: 1em;
+}
+
 .unmotivational-posters-grid {
   display: flex;
   flex-wrap: wrap;
