@@ -319,11 +319,27 @@ function makePoster(event) {
   let newTitle = newPosterTitle.value
   let newQuote = newPosterQuote.value
 
+  if (newUrl == "") {
+    newUrl = images[getRandomIndex(images)]
+  }
+  if (newTitle == "") {
+    newTitle = titles[getRandomIndex(titles)]
+  }
+  if (newQuote == "") {
+    newQuote = quotes[getRandomIndex(quotes)]
+  }
+
   currentPoster = createPoster(newUrl, newTitle, newQuote)
 
-  images.push(newUrl)
-  titles.push(newTitle)
-  quotes.push(newQuote)
+  if (!images.includes(newUrl)) {
+    images.push(newUrl)
+  }
+  if (!titles.includes(newTitle)) {
+    titles.push(newTitle)
+  }
+  if (!quotes.includes(newQuote)) {
+    quotes.push(newQuote)
+  }
 
   changeView(formSection, mainPosterSection)
 
