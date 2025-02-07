@@ -4,6 +4,7 @@ const formSection = document.querySelector(".poster-form")
 const savedSection = document.querySelector(".saved-posters")
 const unmotivationalSection = document.querySelector(".unmotivational-posters")
 
+const mainPoster = document.querySelector(".poster")
 const posterImage = document.querySelector(".poster-img")
 const posterTitle = document.querySelector(".poster-title")
 const posterQuote = document.querySelector(".poster-quote")
@@ -25,7 +26,6 @@ const newPosterQuote = document.querySelector("#poster-quote")
 const savedPostersGrid = document.querySelector(".saved-posters-grid")
 const unmotivationalPostersGrid = document.querySelector(".unmotivational-posters-grid")
 
-const mainPoster = document.querySelector(".poster")
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -319,11 +319,27 @@ function makePoster(event) {
   let newTitle = newPosterTitle.value
   let newQuote = newPosterQuote.value
 
+  if (newUrl == "") {
+    newUrl = images[getRandomIndex(images)]
+  }
+  if (newTitle == "") {
+    newTitle = titles[getRandomIndex(titles)]
+  }
+  if (newQuote == "") {
+    newQuote = quotes[getRandomIndex(quotes)]
+  }
+
   currentPoster = createPoster(newUrl, newTitle, newQuote)
 
-  images.push(newUrl)
-  titles.push(newTitle)
-  quotes.push(newQuote)
+  if (!images.includes(newUrl)) {
+    images.push(newUrl)
+  }
+  if (!titles.includes(newTitle)) {
+    titles.push(newTitle)
+  }
+  if (!quotes.includes(newQuote)) {
+    quotes.push(newQuote)
+  }
 
   changeView(formSection, mainPosterSection)
 
