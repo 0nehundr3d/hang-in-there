@@ -300,11 +300,11 @@ function newPoster(poster = null) {
     poster = randomPoster()
   }
 
-  posterImage.src = poster["imageURL"]
-  posterTitle.innerText = poster["title"]
-  posterQuote.innerText = poster["quote"]
+  posterImage.src = poster.imageURL
+  posterTitle.innerText = poster.title
+  posterQuote.innerText = poster.quote
 
-  currentPoster = createPoster(poster["imageURL"], poster["title"], poster["quote"])
+  currentPoster = createPoster(poster.imageURL, poster.title, poster.quote)
 }
 
 function changeView(hidden, shown) {
@@ -352,9 +352,9 @@ function savePoster() {
 
     savedPostersGrid.innerHTML += 
     `<article class="mini-poster">
-        <img src="${currentPoster["imageURL"]}" alt="saved poster"/>
-        <h2>${currentPoster["title"]}</h2>
-        <h4>${currentPoster["quote"]}</h4>
+        <img src="${currentPoster.imageURL}" alt="saved poster"/>
+        <h2>${currentPoster.title}</h2>
+        <h4>${currentPoster.quote}</h4>
       </atricle>`
   }
 }
@@ -362,7 +362,7 @@ function savePoster() {
 function cleanData(data) {
   cleanData = []
   data.forEach(poster => {
-    cleanData.push(createPoster(poster["img_url"], poster["name"], poster["description"]))
+    cleanData.push(createPoster(poster.img_url, poster.name, poster.description))
   })
   return cleanData
 }
@@ -371,9 +371,9 @@ function createUnmotivationalPosters() {
   cleanedPosters.forEach((poster) => {
     unmotivationalPostersGrid.innerHTML +=
     `<article class="unmotivational-poster">
-      <img src="${poster["imageURL"]}" alt="${poster["title"]}"/>
-      <h2>${poster["title"]}</h2>
-      <h4>${poster["quote"]}</h4>
+      <img src="${poster.imageURL}" alt="${poster["title"]}"/>
+      <h2>${poster.title}</h2>
+      <h4>${poster.quote}</h4>
     </article>`
   })
 }
@@ -387,7 +387,7 @@ function removePoster(event) {
 
   if (element.parentNode.classList.contains("unmotivational-posters-grid")) {
     let toRemove = cleanedPosters.findIndex((poster) => {
-      return poster["title"] === element.childNodes[3].innerText
+      return poster.title === element.childNodes[3].innerText
     })
 
     cleanedPosters.splice(toRemove, 1)
