@@ -345,19 +345,19 @@ function savePoster() {
 
 function cleanData(data) {
   cleanData = []
-  data.forEach(element => {
-    cleanData.push(createPoster(element["img_url"], element["name"], element["description"]))
+  data.forEach(poster => {
+    cleanData.push(createPoster(poster["img_url"], poster["name"], poster["description"]))
   })
   return cleanData
 }
 
 function createUnmotivationalPosters() {
-  cleanedPosters.forEach((element) => {
+  cleanedPosters.forEach((poster) => {
     unmotivationalPostersGrid.innerHTML +=
     `<article class="unmotivational-poster">
-      <img src="${element["imageURL"]}" alt="${element["title"]}"/>
-      <h2>${element["title"]}</h2>
-      <h4>${element["quote"]}</h4>
+      <img src="${poster["imageURL"]}" alt="${poster["title"]}"/>
+      <h2>${poster["title"]}</h2>
+      <h4>${poster["quote"]}</h4>
     </article>`
   })
 }
