@@ -360,10 +360,10 @@ function savePoster() {
 }
 
 function cleanData(data) {
-  cleanData = []
-  data.forEach(poster => {
-    cleanData.push(createPoster(poster.img_url, poster.name, poster.description))
-  })
+  cleanData = data.reduce((acc, poster) => {
+    acc.push(createPoster(poster.img_url, poster.name, poster.description))
+    return acc
+  }, [])
   return cleanData
 }
 
