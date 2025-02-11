@@ -360,11 +360,10 @@ function savePoster() {
 }
 
 function cleanData(data) {
-  cleanData = data.reduce((acc, poster) => {
+  return data.reduce((acc, poster) => {
     acc.push(createPoster(poster.img_url, poster.name, poster.description))
     return acc
   }, [])
-  return cleanData
 }
 
 function createUnmotivationalPosters() {
